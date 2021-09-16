@@ -196,9 +196,19 @@ class Student extends Instructor{
         + `standUp` a method that takes in a slack channel and returns `{name} announces to {channel}, @channel standy times!`
         + `debugsCode` a method that takes in a student object and a subject and returns `{name} debugs {student.name}'s code on {subject}`
 */
-class ProjectManager {
-   
-}
+class ProjectManager extends Instructor{
+  constructor(attributes){
+    super(attributes);
+    this.gradClassName = attributes.gradClassName;
+    this.favInstructor = attributes.favInstructor;
+  }//end of constructor
+   standUp(channel){
+     return `${this.name} announces to ${channel}, @channel study times!`;
+   }// end of standUP
+   debugsCode(Student, subject){
+     return `${this.name} debugs ${Student.name}'s code on ${subject}`;
+   }
+}// end of class
 /*
   STRETCH PROBLEM (no tests!)
     - Extend the functionality of the Student by adding a prop called grade and setting it equal to a number between 1-100.
