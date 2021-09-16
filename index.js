@@ -85,8 +85,16 @@ class Car {
   fill(gallons){
     this.tank = this.tank + gallons;
   }//end of fill
-  drive(milesPerGallon){
-    this.odometer = this.odometer + milesPerGallon;
+  drive(distance){
+    const milesDriven = this.tank * this.milesPerGallon;
+    if(distance <= milesDriven){
+      this.odometer = this.odometer + distance;
+      this.tank = this.tank - (distance / this.milesPerGallon);
+    } else {
+      this.tank = 0;
+      this.odometer = this.odometer + milesDriven;
+      return ` I ran out of fuel at ${this.odometer}!`;
+    }
   }//end of drive
 }//end of car class
 
@@ -103,8 +111,15 @@ class Car {
         + {name} and {location} of course come from the instance's own properties.
 */
 class Lambdasian {
-  
-}
+  constructor(attributes){
+    this.name = attributes.name;
+    this.age = attributes.age;
+    this.location = attributes.location;
+  }//end of constructor
+  speak(){
+    return `Hello my name is ${this.name}, I am from ${this.location}`
+  }//end of speak
+}//end of class Lambdasian
 
 /*
   TASK 4
@@ -120,9 +135,21 @@ class Lambdasian {
         + `demo` receives a `subject` string as an argument and returns the phrase 'Today we are learning about {subject}' where subject is the param passed in.
         + `grade` receives a `student` object and a `subject` string as arguments and returns '{student.name} receives a perfect score on {subject}'
 */
-class Instructor {
+class Instructor extends Lambdasian{
+  constructor(attributes){
+    super(attributes);
+    this.specialty = attributes.specialty;
+    this.favLanguage = attributes.favLanguage;
+    this.catchPhrase = attributes.catchPhrase;
+  }//end of constructor
+  demo(subject){
+    return `Today we are learning about ${subject}`;
+  }//end of demo
+  grade(student, subject){
+    return `${student.name} receives a perfect score on ${subject}`;
+  }//end of grade
+}//end of class
 
-}
 /*
   TASK 5
     - Write a Student class extending Lambdasian.
@@ -138,8 +165,16 @@ class Instructor {
         + `PRAssignment` a method that receives a subject as an argument and returns `student.name has submitted a PR for {subject}`
         + `sprintChallenge` similar to PRAssignment but returns `student.name has begun sprint challenge on {subject}`
 */
-class Student {
-   
+class Student extends Instructor{
+  constructor(attributes){
+    super(attributes);
+    this.previousBackground = attributes.previousBackground;
+    this.className = attributes.className;
+    this.favSubjects = attributes.favSubjects;
+  }//end of constructor
+   listSubjects(favSubjects){
+     return `Loving ${this.favSubjects[0]}`;
+   }//end of list subjects
 }
 
 /*
