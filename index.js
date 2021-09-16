@@ -173,9 +173,15 @@ class Student extends Instructor{
     this.favSubjects = attributes.favSubjects;
   }//end of constructor
    listSubjects(favSubjects){
-     return `Loving ${this.favSubjects[0]}`;
+     return `Loving ${this.favSubjects[0]}, ${this.favSubjects[1]}, ${this.favSubjects[2]}`;
    }//end of list subjects
-}
+   PRAssignment(subject){
+     return `${this.name} has submitted a PR for ${subject}`;
+   }//end of PRAssignment
+   sprintChallenge(subject){
+     return `${this.name} has begun sprint challenge on ${subject}`;
+   }//end of sprintChallenge
+}// end of class
 
 /*
   TASK 6
